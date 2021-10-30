@@ -63,3 +63,20 @@ jobs:
             php artisan migrate
             npm install
             npm run production
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: "${{ github.token }}"
+          target_url: http://whenprogramming.com/awesome
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: "${{ github.token }}"
+          target_url: http://whenprogramming.com/awesome
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
