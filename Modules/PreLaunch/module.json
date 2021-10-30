@@ -1,0 +1,13 @@
+{
+    "name": "PreLaunch",
+    "alias": "prelaunch",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PreLaunch\\Providers\\PreLaunchServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
