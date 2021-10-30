@@ -67,7 +67,6 @@ jobs:
             git checkout -f
             git pull origin master
             composer install
-            chmod -R 644 *
-            chmod 755 bootstrap/cache
-            chmod 755 storage
+            find . -type f -exec chmod 644 {} \;
+            find . -type d -exec chmod 775 {} \;
             php artisan migrate
