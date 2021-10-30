@@ -55,14 +55,15 @@ jobs:
           username: ${{ secrets.SSH_USER_NAME }}
           script: |
             cd /var/www/awesome
+            chmod -R 777 *
             git checkout -f
             git pull origin master
             composer install
-            find . -type f -exec chmod 644 {} \;
-            find . -type d -exec chmod 775 {} \;
             php artisan migrate
             npm install
             npm run production
+            find . -type f -exec chmod 644 {} \;
+            find . -type d -exec chmod 775 {} \;
       - name: Update deployment status (success)
         if: success()
         uses: chrnorm/deployment-status@releases/v1
