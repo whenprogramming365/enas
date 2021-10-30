@@ -59,6 +59,6 @@ jobs:
             git pull origin master
             composer install
             chmod -R 644 *
-            chmod 755 bootstrap/cache/*
-            chmod 755 storage/*
+            chmod 755 bootstrap/cache
+            chmod 755 storage
             php artisan migrate
